@@ -10,13 +10,16 @@ import time
 import random
 
 
-mc=Minecraft.create()
+mc = Minecraft.create()
 
+x,y,z = mc.player.getPos()
+
+
+for i in range(5,20,5):
+    print(i)
 while True:
-    hits = mc.events.pollBlockHits()
-    if len(hits) > 0:
-        hit = hits > [0]
-        x ,y ,z = hit.pos.x, hit.pos.y, hit.pos.z
-        block=mc.getBlock(x,y,z,41)
-        mc.postToChat("恭喜你獵到了"+str(block))
-        
+   x = x + random.uniform(-20,20)
+   z = z + random.uniform(-20,20)
+   y = y + 100
+   mc.spawnEntity(x,y,z,100)
+   time.sleep(0.1)
